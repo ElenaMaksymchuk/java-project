@@ -230,3 +230,51 @@ footer {
 .buttons a:nth-child(1), .buttons input:nth-child(1) {
     margin-right: 5px;
 }
+
+.text {
+    width: 700px;
+    text-align: justify;
+    border: 1px solid #9b9b9b;
+    border-radius: 5px;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-bottom: 10px;
+    background-color: white;
+    word-wrap: break-word;
+}
+
+.images {
+    width: 810px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.images * {
+    width: 400px;
+    height: 260px;
+}
+
+.contacts {
+    display: flex;
+    justify-items: center;
+    width: 1000px;
+}
+
+.contacts p {
+    margin: 0;
+    text-align: justify;
+}
+
+.blocks div {
+    margin-bottom: 10px;
+}
+
+.blocks p:nth-child(1) {
+    font-weight: bold;
+}
+
+iframe {
+    margin-right: 20px;
+}
