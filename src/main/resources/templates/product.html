@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Деталі</title>
+    <link rel="stylesheet" type="text/css" href="/styles.css">
+    <script src="/activePage.js"></script>
+</head>
+<body>
+<header th:insert="sections/header::header"></header>
+<main>
+    <h3>Деталі</h3>
+    <div class="details">
+        <img th:src="${product.getImage()}">
+        <h3 th:text="${product.getName()}"></h3>
+        <p th:text="'Категорія: ' + ${product.getCategory().getName()}"></p>
+        <p th:text="'Бренд: ' + ${product.getBrand().getName()}"></p>
+        <p th:text="'Колір: ' + ${product.getColor()}"></p>
+        <p th:text="'Розмір: ' + ${product.getSize()}"></p>
+        <p th:text="'Опис: ' + ${product.getDescription()}"></p>
+        <p th:text="${product.getPrice().intValue()} + ' ₴'"></p>
+        <form th:action="@{'/addProductToCart/' + ${product.getId()}}" method="post">
+            <div class="buttons">
+                <input type="submit" class="greenButton" value="Купити">
+            </div>
+        </form>
+    </div>
+</main>
+<footer th:insert="sections/footer::footer"></footer>
+</body>
+</html>

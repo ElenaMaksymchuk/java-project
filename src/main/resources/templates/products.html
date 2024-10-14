@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Товари</title>
+    <link rel="stylesheet" type="text/css" href="/styles.css">
+    <script src="/activePage.js"></script>
+</head>
+<body>
+<header th:insert="sections/header::header"></header>
+<main>
+    <h3>Товари</h3>
+    <form class="searchForm" action="/products" method="post">
+        <label for="name"><span>Назва: </span><input type="text" id="name" name="name"></label>
+        <label for="brand"><span>Бренд: </span>
+            <select id="brand" name="brand">
+                <option value="" selected>Не вибрано</option>
+                <option th:each="brand: ${brands}" th:value="${brand.id}" th:text="${brand.name}"></option>
+            </select>
+        </label>
+        <label for="category"><span>Категорія: </span>
+            <select id="category" name="category">
+                <option value="" selected>Не вибрано</option>
+                <option th:each="category: ${categories}" th:value="${category.id}" th:text="${category.name}"></option>
+            </select>
+        </label>
+        <label for="price"><span>Ціна: </span><input type="number" id="price" name="price"></label>
+        <label for="size"><span>Розмір: </span>
+            <input type="text" id="size" name="size">
+        </label>
+        <label for="color"><span>Колір: </span>
+            <input type="text" id="color" name="color">
+        </label>
+        <input class="greenButton" type="submit" value="Знайти">
+    </form>
+    <div class="products">
+        <div class="product" th:each="element:${products}">
+            <img th:src="${element.getImage()}">
+            <p th:text="${element.getName()}"></p>
+            <p th:text="${element.getPrice().intValue()} + ' ₴'"></p>
+            <form th:action="@{'/addProductToCart/' + ${element.getId()}}" method="post">
+                <div class="buttons">
+                    <a class="darkGreenButton" th:href="'/products/' + ${element.getId()}">Деталі</a>
+                    <input type="submit" class="greenButton" value="Купити">
+                </div>
+            </form>
+        </div>
+    </div>
+</main>
+<footer th:insert="sections/footer::footer"></footer>
+</body>
+</html>

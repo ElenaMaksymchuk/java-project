@@ -1,0 +1,10 @@
+<div class="headerMenu" th:fragment="header">
+    <a href="/">
+        <div>SPORTS SHOP</div>
+    </a>
+    <a href="/products"><span>Товари</span></a>
+    <a href="/about"><span>Про нас</span></a>
+    <a href="/contacts"><span>Контакти</span></a>
+    <a href="/cart"><span th:text="'Корзина (' + ${totalQuantity} + ')'"></span></a>
+</div>
+

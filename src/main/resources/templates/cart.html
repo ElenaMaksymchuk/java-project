@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Корзина</title>
+    <link rel="stylesheet" type="text/css" href="/styles.css">
+    <script src="/activePage.js"></script>
+</head>
+<body>
+<header th:insert="sections/header::header"></header>
+<main>
+    <h3>Корзина</h3>
+    <div class="cartProducts">
+        <div class="cartProduct" th:each="element:${session.cart}">
+            <h4 th:text="${element.getProduct().getName()}"></h4>
+            <p th:text="'Ціна: ' + ${element.getProduct().getPrice()} + ' ₴'"></p>
+            <p th:text="'Кількість: ' + ${element.getQuantity()} + ' шт.'"></p>
+            <div class="buttons">
+            <form th:action="@{'/addProduct/' + ${element.getProduct().getId()}}" method="post">
+                <input class="darkGreenButton" type="submit" value="+">
+            </form>
+            <form th:action="@{'/removeProduct/' + ${element.getProduct().getId()}}" method="post">
+                <input class="darkGreenButton" type="submit" value="-">
+            </form>
+            </div>
+        </div>
+        <p th:text="'Загальна вартість: ' + ${totalCost} + ' ₴'"></p>
+    </div>
+</main>
+<footer th:insert="sections/footer::footer"></footer>
+</body>
+</html>
