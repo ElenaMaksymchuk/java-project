@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Кабінет користувача</title>
+    <link rel="stylesheet" type="text/css" href="/styles.css">
+    <script src="/activePage.js"></script>
+</head>
+<body>
+<header th:insert="sections/header::header"></header>
+<main>
+    <h3>Кабінет користувача</h3>
+    <form class="searchForm" th:action="@{/updateUser}" method="post">
+        <input type="hidden" id="id" name="id" th:value="${user.id}">
+        <label for="username"><span>Логін:</span>
+            <input type="text" id="username" name="username" th:value="${user.username}" class="readonly-field" disabled>
+        </label>
+        <label for="password"><span>Пароль:</span>
+            <input type="password" id="password" name="password" th:value="${user.password}" required>
+        </label>
+        <label for="fullName"><span>ПІБ:</span>
+            <input type="text" id="fullName" name="fullName" th:value="${user.fullName}" required>
+        </label>
+        <label for="address"><span>Адреса:</span>
+            <input type="text" id="address" name="address" th:value="${user.address}" required>
+        </label>
+        <label for="phone"><span>Телефон:</span>
+            <input type="text" id="phone" name="phone" th:value="${user.phone}" required>
+        </label>
+        <label for="email"><span>Email:</span>
+            <input type="email" id="email" name="email" th:value="${user.email}" required>
+        </label>
+        <button type="submit" class="greenButton">Оновити дані</button>
+    </form>
+    <div th:if="${successMessage}">
+        <p class="successMessage" th:text="${successMessage}"></p>
+        <script>
+            setTimeout(function() {
+                window.location.href = "/cabinet";
+            }, 5000);
+        </script>
+    </div>
+    <h3>Історія замовлень</h3>
+    <p th:if="${#lists.isEmpty(ordersWithTotalPrice)}">Немає замовлень для відображення.</p>
+    <div th:each="orderWithTotalPrice, iterStat : ${ordersWithTotalPrice}" class="userOrder">
+        <h4>Замовлення № <span th:text="${iterStat.count}"></span></h4>
+        <div th:each="item : ${orderWithTotalPrice.order.items}" class="userOrderItem">
+            <h4><span th:text="${item.product.name}"></span></h4>
+            <p>Кількість: <span th:text="${item.quantity}"></span></p>
+            <p>Ціна: <span th:text="${item.product.price} + ' ₴'"></span></p>
+        </div>
+        <h4>Загальна ціна: <span th:text="${orderWithTotalPrice.totalPrice} + ' ₴'"></span></h4>
+    </div>
+</main>
+<footer th:insert="sections/footer::footer"></footer>
+<script>
+    if (window.location.search.length > 0) {
+        const url = new URL(window.location);
+        url.search = '';
+        window.history.replaceState({}, '', url);
+    }
+</script>
+</body>
+</html>

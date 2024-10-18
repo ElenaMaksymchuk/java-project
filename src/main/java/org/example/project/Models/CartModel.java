@@ -1,12 +1,6 @@
 package org.example.project.Models;
 import jakarta.persistence.*;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-@Entity
 public class CartModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

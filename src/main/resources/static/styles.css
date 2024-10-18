@@ -278,3 +278,113 @@ footer {
 iframe {
     margin-right: 20px;
 }
+
+.cartOrder {
+    width: max-content;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid green;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 10px;
+    background-color: rgb(229, 245, 239);
+}
+
+.cartOrder p {
+    font-size: 26px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.confirmButton {
+    width: 100%;
+    display: inline-block;
+    font-weight: 400;
+    font-size: 18px;
+    padding: 10px 15px;
+    text-align: center;
+    text-decoration: none;
+    background-color: green;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.cartOrder .confirmButton {
+    margin-left: 10px;
+}
+
+.confirmButton:hover {
+    background-color: #009400;
+}
+
+.confirmButtonLink {
+    text-decoration: none;
+}
+
+.confirmForm {
+    width: max-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid green;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 10px;
+    background-color: rgb(229, 245, 239);
+}
+
+.confirmForm input[type="text"], input[type="password"], input[type="email"] {
+    width: 200px;
+    margin-bottom: 10px;
+}
+
+.confirmForm label {
+    display: flex;
+}
+
+.confirmForm span {
+    width: 130px;
+}
+
+.successMessage {
+    font-size: 18px;
+    font-weight: bold;
+    color: green;
+}
+
+.errorMessage {
+    font-size: 18px;
+    font-weight: bold;
+    color: red;
+}
+
+.userOrder {
+    text-align: justify;
+    border: 1px solid #9b9b9b;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.userOrderItem {
+    width: 500px;
+    text-align: justify;
+    border: 1px solid #9b9b9b;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: white;
+}
+
+.userOrder h4:nth-child(1) {
+    margin-bottom: 10px;
+}
+
+
+
+

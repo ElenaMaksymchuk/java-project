@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="uk" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Оформлення замовлення</title>
+    <link rel="stylesheet" type="text/css" href="/styles.css">
+</head>
+<body>
+<main>
+    <h3>Оформлення замовлення</h3>
+    <form class="confirmForm" th:action="@{/confirmOrder}" method="post">
+        <label for="fullName"><span>ПІБ:</span>
+            <input type="text" id="fullName" name="fullName" required>
+        </label>
+        <label for="phone"><span>Телефон:</span>
+            <input type="text" id="phone" name="phone" required>
+        </label>
+        <label for="address"><span>Адреса доставки:</span>
+            <input type="text" id="address" name="address" required>
+        </label>
+        <button type="submit" class="confirmButton">Підтвердити замовлення</button>
+    </form>
+    <div th:if="${successMessage}">
+        <p class="successMessage" th:text="${successMessage}"></p>
+        <script>
+            setTimeout(function() {
+                window.location.href = "/";
+            }, 5000);
+        </script>
+    </div>
+</main>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="uk" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Підтвердження замовлення</title>
+    <link rel="stylesheet" type="text/css" href="/styles.css">
+</head>
+<body>
+<main>
+    <h3>Підтвердження замовлення</h3>
+    <div th:if="${successMessage}">
+        <p class="successMessage" th:text="${successMessage}"></p>
+        <script>
+            setTimeout(function() {
+                window.location.href = "/cabinet";
+            }, 5000);
+        </script>
+    </div>
+    <div th:if="${errorMessage}">
+        <p class="errorMessage" th:text="${errorMessage}"></p>
+        <script>
+            setTimeout(function() {
+                window.location.href = "/cabinet";
+            }, 5000);
+        </script>
+    </div>
+</main>
+</body>
+</html>
