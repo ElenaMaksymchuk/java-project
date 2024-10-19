@@ -1,4 +1,5 @@
 package org.example.project.Models;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -12,6 +13,7 @@ public class UserModel {
     private String address;
     private String phone;
     private String email;
+    private boolean isBlocked;
 
     public Long getId() {
         return id;
@@ -67,5 +69,13 @@ public class UserModel {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public boolean isBlocked() {
+        return isBlocked;
+    }
+
+    public void setBlocked(boolean blocked) {
+        isBlocked = blocked;
     }
 }

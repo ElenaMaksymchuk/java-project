@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="uk" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Товари</title>
+    <link rel="stylesheet" type="text/css" href="/styles.css">
+</head>
+<body>
+<main>
+    <h3>Товари</h3>
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Назва товару</th>
+            <th>Ціна</th>
+            <th>Розмір</th>
+            <th>Колір</th>
+            <th>Опис</th>
+            <th>Зображення</th>
+            <th>Бренд</th>
+            <th>Категорія</th>
+            <th>Кнопки</th>
+        </tr>
+        <tr th:each="product : ${products}">
+            <td th:text="${product.id}"></td>
+            <td th:text="${product.name}"></td>
+            <td th:text="${product.price}"></td>
+            <td th:text="${product.size}"></td>
+            <td th:text="${product.color}"></td>
+            <td class="description" th:text="${product.description}"></td>
+            <td><img th:src="@{${product.image}}" alt="Зображення товару" style="width: 50px; height: 50px;"></td>
+            <td th:text="${product.brand.name}"></td>
+            <td th:text="${product.category.name}"></td>
+            <td>
+                <a class="yellowButton" th:href="@{'/updateProduct?id=' + ${product.id}}">Оновити</a>
+                <a class="redButton" th:href="@{'/deleteProduct?id=' + ${product.id}}">Видалити</a>
+            </td>
+        </tr>
+    </table>
+        <a class="blueButton" href="/addProduct">Додати товар</a>
+</main>
+<script>
+    if (window.location.search.length > 0) {
+        const url = new URL(window.location);
+        url.search = '';
+        window.history.replaceState({}, '', url);
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="uk" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Додавання категорії</title>
+    <link rel="stylesheet" type="text/css" href="/styles.css">
+</head>
+<body>
+<main>
+    <h3>Додавання категорії</h3>
+    <form class="adminPanelAddForm" th:action="@{/addCategory}" method="post">
+        <label for="name"><span>Назва:</span>
+            <input type="text" id="name" name="name" required>
+        </label>
+        <button type="submit" class="blueButton">Додати</button>
+    </form>
+</main>
+</body>
+</html>

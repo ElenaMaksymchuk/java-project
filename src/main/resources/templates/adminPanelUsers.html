@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="uk" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Користувачі</title>
+    <link rel="stylesheet" type="text/css" href="/styles.css">
+</head>
+<body>
+<main>
+    <h3>Користувачі</h3>
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Логін</th>
+            <th>Пароль</th>
+            <th>ПІБ</th>
+            <th>Адреса</th>
+            <th>Телефон</th>
+            <th>Email</th>
+            <th>Статус блокування</th>
+            <th>Кнопки</th>
+        </tr>
+        <tr th:each="user : ${users}">
+            <td th:text="${user.id}"></td>
+            <td th:text="${user.username}"></td>
+            <td th:text="${user.password}"></td>
+            <td th:text="${user.fullName}"></td>
+            <td th:text="${user.address}"></td>
+            <td th:text="${user.phone}"></td>
+            <td th:text="${user.email}"></td>
+            <td th:text="${user.blocked ? 'Заблокований' : 'Активний'}"></td>
+            <td>
+                <a class="greenButton" th:href="@{'/adminPanelUserOrders?id=' + ${user.id}}">Історія замовлень</a>
+                <form th:action="@{/blockUser}" method="post" style="display:inline;">
+                    <input type="hidden" name="id" th:value="${user.id}">
+                    <input type="hidden" name="isBlocked" th:value="true" th:if="${!user.blocked}">
+                    <input type="hidden" name="isBlocked" th:value="false" th:if="${user.blocked}">
+                    <button type="submit" class="yellowBlockButton" th:text="${user.blocked ? 'Розблокувати' : 'Заблокувати'}"></button>
+                </form>
+                <a class="redButton" th:href="@{'/deleteUser?id=' + ${user.id}}">Видалити</a>
+            </td>
+        </tr>
+    </table>
+    <div th:if="${errorMessage}">
+        <p class="errorMessage" th:text="${errorMessage}"></p>
+        <script>
+            setTimeout(function() {
+                window.location.href = "/adminPanelUsers";
+            }, 5000);
+        </script>
+    </div>
+</main>
+<script>
+    if (window.location.search.length > 0) {
+        const url = new URL(window.location);
+        url.search = '';
+        window.history.replaceState({}, '', url);
+    }
+</script>
+</body>
+</html>

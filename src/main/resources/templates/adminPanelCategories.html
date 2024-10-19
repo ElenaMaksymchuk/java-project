@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="uk" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Категорії</title>
+    <link rel="stylesheet" type="text/css" href="/styles.css">
+</head>
+<body>
+<main>
+    <h3>Категорії</h3>
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Назва категорії</th>
+            <th>Кнопки</th>
+        </tr>
+        <tr th:each="category : ${categories}">
+            <td th:text="${category.id}"></td>
+            <td th:text="${category.name}"></td>
+            <td>
+                <a class="yellowButton" th:href="@{'/updateCategory?id=' + ${category.id}}">Оновити</a>
+                <a class="redButton" th:href="@{'/deleteCategory?id=' + ${category.id}}">Видалити</a>
+            </td>
+        </tr>
+    </table>
+    <div style="text-align: left;">
+        <a class="blueButton" href="/addCategory">Додати категорію</a>
+    </div>
+</main>
+<script>
+    if (window.location.search.length > 0) {
+        const url = new URL(window.location);
+        url.search = '';
+        window.history.replaceState({}, '', url);
+    }
+</script>
+</body>
+</html>

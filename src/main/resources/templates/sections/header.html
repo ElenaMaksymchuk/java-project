@@ -5,6 +5,7 @@
     <a href="/contacts"><span>Контакти</span></a>
     <a href="/cart"><span th:text="'Кошик (' + ${totalQuantity} + ')'"></span></a>
     <a th:if="${username != null}" href="/cabinet"><span th:text="${username}"></span></a>
+    <a th:if="${username == 'admin'}" href="/adminPanel"><span>Адміністративна панель</span></a>
     <a th:if="${username != null}" href="/logout"><span>Вийти</span></a>
     <a th:if="${username == null}" href="/login"><span>Увійти</span></a>
     <a th:if="${username == null}" href="/registration"><span>Реєстрація</span></a>

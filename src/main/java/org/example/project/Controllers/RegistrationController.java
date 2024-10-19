@@ -13,7 +13,7 @@ import jakarta.servlet.http.Cookie;
 @Controller
 public class RegistrationController {
     @Autowired
-    private IUserRepository userRepository;
+    private IUserRepository iUserRepository;
 
     @GetMapping("/registration")
     public String registration(HttpServletRequest request) {
@@ -30,7 +30,7 @@ public class RegistrationController {
 
     @PostMapping("/register")
     public String registerUser(@RequestParam String username, @RequestParam String password, @RequestParam String fullName, @RequestParam String address, @RequestParam String phone, @RequestParam String email, Model model) {
-        if (userRepository.findByUsername(username) != null) {
+        if (iUserRepository.findByUsername(username) != null) {
             model.addAttribute("errorMessage", "Користувач з таким логіном вже існує!");
             return "registration";
         }
@@ -41,7 +41,7 @@ public class RegistrationController {
         newUser.setAddress(address);
         newUser.setPhone(phone);
         newUser.setEmail(email);
-        userRepository.save(newUser);
+        iUserRepository.save(newUser);
         model.addAttribute("successMessage", "Користувач " + username + " успішно зареєстрований!");
         return "registration";
     }

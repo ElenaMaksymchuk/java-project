@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -37,7 +36,6 @@ public class CabinetController {
         if (username != null) {
             UserModel user = iUserRepository.findByUsername(username);
             model.addAttribute("user", user);
-
             List<UserOrderModel> orders = iUserOrderRepository.findByUser(user);
             model.addAttribute("orders", orders);
             model.addAttribute("ordersWithTotalPrice", orders.stream().map(order -> {

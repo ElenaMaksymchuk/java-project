@@ -197,7 +197,7 @@ footer {
     margin-bottom: 10px;
 }
 
-.searchForm input[type="text"], input[type="number"] {
+.searchForm input[type="text"], input[type="number"], textarea {
     width: 200px;
     margin-bottom: 10px;
 }
@@ -384,6 +384,144 @@ iframe {
 .userOrder h4:nth-child(1) {
     margin-bottom: 10px;
 }
+
+.adminPanelButtons {
+    display: flex;
+    flex-direction: column;
+}
+
+.adminPanelButtons a {
+    width: 200px;
+    margin-bottom: 10px;
+}
+
+.greyButton {
+    display: inline-block;
+    font-weight: 400;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.greyButton:hover {
+    background-color: #545b62;
+}
+
+.blueButton {
+    display: inline-block;
+    font-weight: 400;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.blueButton:hover {
+    background-color: #0056b3;
+}
+
+.yellowButton {
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    border: 1px solid #ffc107;
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: #fff;
+    background-color: #ffc107;
+    text-decoration: none;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.yellowBlockButton {
+    display: inline-block;
+    font-weight: 400;
+    font-size: 14px;
+    text-align: center;
+    border: 1px solid #ffc107;
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: #fff;
+    background-color: #ffc107;
+    text-decoration: none;
+    margin-left: 10px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.redButton {
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    border: 1px solid #dc3545;
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: #fff;
+    background-color: #dc3545;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+table {
+    border-collapse: collapse;
+    margin-bottom: 10px;
+}
+
+th, td {
+    border: 1px solid black;
+    padding: 10px;
+    text-align: center;
+}
+
+table, th, td {
+    background-color: white;
+}
+
+.description {
+    width: 400px;
+}
+
+.adminPanelAddForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10px;
+    border: 1px solid #9b9b9b;
+    border-radius: 5px;
+    background-color: white;
+    margin-bottom: 10px;
+}
+
+.adminPanelAddForm input[type="text"], input[type="number"], textarea {
+    width: 200px;
+    margin-bottom: 10px;
+}
+
+.adminPanelAddForm select {
+    width: 208px;
+    margin-bottom: 10px;
+}
+
+.adminPanelAddForm label {
+    display: flex;
+}
+
+.adminPanelAddForm span {
+    width: 100px;
+}
+
 
 
 

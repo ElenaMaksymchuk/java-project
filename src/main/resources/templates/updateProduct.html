@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="uk" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Оновлення товару</title>
+    <link rel="stylesheet" type="text/css" href="/styles.css">
+</head>
+<body>
+<main>
+    <h3>Оновлення товару</h3>
+    <form class="adminPanelAddForm" th:action="@{/updateProduct}" method="post">
+        <input type="hidden" name="id" th:value="${product.id}">
+        <label for="name"><span>Назва:</span>
+            <input type="text" id="name" name="name" th:value="${product.name}" required>
+        </label>
+        <label for="price"><span>Ціна:</span>
+            <input type="number" id="price" name="price" th:value="${product.price}" required>
+        </label>
+        <label for="size"><span>Розмір:</span>
+            <input type="text" id="size" name="size" th:value="${product.size}" required>
+        </label>
+        <label for="color"><span>Колір:</span>
+            <input type="text" id="color" name="color" th:value="${product.color}" required>
+        </label>
+        <label for="description"><span>Опис:</span>
+            <textarea id="description" name="description" required th:text="${product.description}"></textarea>
+        </label>
+        <label for="image"><span>Зображення:</span>
+            <input type="text" id="image" name="image" th:value="${product.image}" required>
+        </label>
+        <label for="brand"><span>Бренд:</span>
+            <select id="brand" name="brandId" required>
+                <option th:each="brand : ${brands}" th:value="${brand.id}" th:selected="${brand.id} == ${product.brand.id}" th:text="${brand.name}"></option>
+            </select>
+        </label>
+        <label for="category"><span>Категорія:</span>
+            <select id="category" name="categoryId" required>
+                <option th:each="category : ${categories}" th:value="${category.id}" th:selected="${category.id} == ${product.category.id}" th:text="${category.name}"></option>
+            </select>
+        </label>
+        <button type="submit" class="blueButton">Оновити</button>
+    </form>
+</main>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="uk" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Історія замовлень</title>
+    <link rel="stylesheet" type="text/css" href="/styles.css">
+</head>
+<body>
+<main>
+    <h3>Історія замовлень</h3>
+    <p th:if="${#lists.isEmpty(ordersWithTotalPrice)}">Немає замовлень для відображення.</p>
+    <div th:each="orderWithTotalPrice, iterStat : ${ordersWithTotalPrice}" class="userOrder">
+        <h4>Замовлення № <span th:text="${iterStat.count}"></span></h4>
+        <div th:each="item : ${orderWithTotalPrice.order.items}" class="userOrderItem">
+            <h4><span th:text="${item.product.name}"></span></h4>
+            <p>Кількість: <span th:text="${item.quantity}"></span></p>
+            <p>Ціна: <span th:text="${item.product.price} + ' ₴'"></span></p>
+        </div>
+        <h4>Загальна ціна: <span th:text="${orderWithTotalPrice.totalPrice} + ' ₴'"></span></h4>
+    </div>
+</main>
+</body>
+</html>
+

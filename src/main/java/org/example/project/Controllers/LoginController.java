@@ -15,7 +15,7 @@ import jakarta.servlet.http.Cookie;
 public class LoginController {
 
     @Autowired
-    private IUserRepository userRepository;
+    private IUserRepository iUserRepository;
 
     @GetMapping("/login")
     public String login(HttpServletRequest request) {
@@ -32,14 +32,23 @@ public class LoginController {
 
     @PostMapping("/login")
     public String loginUser(@RequestParam String username, HttpServletResponse response, @RequestParam String password, Model model) {
-        UserModel user = userRepository.findByUsername(username);
-        if (user != null && user.getPassword().equals(password)) {
-            Cookie loginCookie = new Cookie("username", username);
-            loginCookie.setMaxAge(60 * 60 * 24);
-            response.addCookie(loginCookie);
-            return "redirect:/";
+        UserModel user = iUserRepository.findByUsername(username);
+        if (user != null) {
+            if (user.isBlocked()) {
+                model.addAttribute("errorMessage", "Користувач " + username + " заблокований!");
+                return "login";
+            }
+            if (user.getPassword().equals(password)) {
+                Cookie loginCookie = new Cookie("username", username);
+                loginCookie.setMaxAge(60 * 60 * 24);
+                response.addCookie(loginCookie);
+                return "redirect:/";
+            } else {
+                model.addAttribute("errorMessage", "Неправильний пароль!");
+                return "login";
+            }
         } else {
-            model.addAttribute("errorMessage", "Неправильний логін або пароль!");
+            model.addAttribute("errorMessage", "Користувача не знайдено!");
             return "login";
         }
     }
